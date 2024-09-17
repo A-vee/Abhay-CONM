@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>3.Program of Gauss Jordan.</h1>
+    <pre>
+      <code>
+         #include &lt;iostream&gt;
+         using namespace std;
+         class equation
+         {
+         public:
+             double a, b, c, d;
+             equation()
+             {
+                 this-&gt;a = 0;
+                 this-&gt;b = 0;
+                 this-&gt;c = 0;
+                 this-&gt;d = 0;
+             }
+             equation(double a, double b, double c, double d)
+             {
+                 this-&gt;a = a;
+                 this-&gt;b = b;
+                 this-&gt;c = c;
+                 this-&gt;d = d;
+             }
+             set(double a, double b, double c, double d)
+             {
+                 this-&gt;a = a;
+                 this-&gt;b = b;
+                 this-&gt;c = c;
+                 this-&gt;d = d;
+             }
+             equation operator/(double val)
+             {
+                 equation temp(this-&gt;a, this-&gt;b, this-&gt;c, this-&gt;d);
+                 temp.a /= val;
+                 temp.b /= val;
+                 temp.c /= val;
+                 temp.d /= val;
+                 return temp;
+             }
+             equation operator-(equation eq)
+             {
+                 equation temp(this-&gt;a, this-&gt;b, this-&gt;c, this-&gt;d);
+                 temp.a -= eq.a;
+                 temp.b -= eq.b;
+                 temp.c -= eq.c;
+                 temp.d -= eq.d;
+                 return temp;
+             }
+             equation operator*(double val)
+             {
+                 equation temp(this-&gt;a, this-&gt;b, this-&gt;c, this-&gt;d);
+                 temp.a *= val;
+                 temp.b *= val;
+                 temp.c *= val;
+                 temp.d *= val;
+                 return temp;
+             }
+             friend ostream &amp;operator&lt;&lt;(ostream &, equation);
+             ~equation() {}
+         };
+         ostream &amp;operator&lt;&lt;(ostream &amp;os, equation eq)
+         {
+             os &lt;&lt; eq.a &lt;&lt; "x + " &lt;&lt; eq.b &lt;&lt; "y + " &lt;&lt; eq.c &lt;&lt; "z = " &lt;&lt; eq.d &lt;&lt; "\n";
+             return os;
+         }
+         void gaussJordan(equation eq1, equation eq2, equation eq3)
+         {
+             // X
+             eq1 = eq1 / eq1.a;           // setting coeff of x1 1
+             eq2 = eq2 - (eq1 * (eq2.a)); // setting coeff of x2 0
+             eq3 = eq3 - (eq1 * (eq3.a)); // setting coeff of x3 0
+         
+             // Y
+             eq2 = eq2 / eq2.b;           // setting coeff of y1 0
+             eq1 = eq1 - (eq2 * (eq1.b)); // setting coeff of y2 1
+             eq3 = eq3 - (eq2 * (eq3.b)); // setting coeff of y3 0
+         
+             // Z
+             eq3 = eq3 / eq3.c;           // setting coeff of z1 0
+             eq1 = eq1 - (eq3 * (eq1.c)); // setting coeff of z2 0
+             eq2 = eq2 - (eq3 * (eq2.c)); // setting coeff of z3 1
+         
+             cout &lt;&lt; "x = " &lt;&lt; eq1.d &lt;&lt; " y = " &lt;&lt; eq2.d &lt;&lt; " z = " &lt;&lt; eq3.d &lt;&lt; endl;
+         }
+         int main()
+         {
+             double a, b, c, d;
+             equation equations[3];
+             for (int i = 0; i &lt; 3; i++)
+             {
+                 cout &lt;&lt; "Enter Equation " &lt;&lt; i + 1 &lt;&lt; " a b c d : ";
+                 cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;
+                 equations[i].set(a, b, c, d);
+             }
+             gaussJordan(equations[0], equations[1], equations[2]);
+             return 0;
+         }
+         
+      </code>
+    </pre>
+  </body>
+</html>

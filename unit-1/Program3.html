@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>3.Floating Point Subtraction.</h1>
+    <pre>
+      <code>
+         #include &lt;iostream&gt;
+         using namespace std;
+         
+         pair&lt;float, int&gt; converter(float num)
+         {
+             pair&lt;float, int&gt; myNum = {num, 0};
+             while (abs(myNum.first) &gt;= 10.0)  // Handling cases greater than or equal to 10
+             {
+                 myNum.first /= 10;
+                 myNum.second += 1;
+             }
+             while (abs(myNum.first) &lt; 1.0 && myNum.first != 0.0)  // Handling cases less than 1
+             {
+                 myNum.first *= 10;
+                 myNum.second -= 1;
+             }
+             return myNum;
+         }
+         
+         pair&lt;float, int&gt; subtracter(float first, float second)
+         {
+             pair&lt;float, int&gt; p1 = converter(first);
+             pair&lt;float, int&gt; p2 = converter(second);
+             
+             // Adjust both numbers to the same exponent
+             while (p1.second != p2.second)
+             {
+                 if (p1.second &lt; p2.second)
+                 {
+                     p1.first /= 10;
+                     p1.second += 1;
+                 }
+                 else
+                 {
+                     p2.first /= 10;
+                     p2.second += 1;
+                 }
+             }
+             
+             p1.first -= p2.first;
+             return p1;
+         }
+         
+         int main()
+         {
+             float first, second;
+             cout &lt;&lt; "Enter floating point numbers (a b) :";
+             cin &gt;&gt; first &gt;&gt; second;
+             pair&lt;float, int&gt; res = subtracter(first, second);
+             cout &lt;&lt; first &lt;&lt; " - " &lt;&lt; second &lt;&lt; " = " &lt;&lt; res.first &lt;&lt; "E" &lt;&lt; res.second &lt;&lt; endl;
+         }
+         
+      </code>
+    </pre>
+  </body>
+</html>

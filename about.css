@@ -1,0 +1,129 @@
+
+
+*
+{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+*
+{
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+
+}
+@font-face {
+    font-family: light;
+    src: url(apercu-light-pro.ttf);
+}
+@font-face {
+    font-family:head ;
+    src: url(Heading-Now-Variable.ttf);
+}
+nav
+{background: linear-gradient(89.2deg, rgba(235, 235, 235, 0.731) 10.4%, rgb(199, 187, 187) 37.1%, rgb(35, 35, 35) 64.3%, rgb(255, 255, 255) 90.5%);   height: 10vh;
+    width:100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border: 2px solid black;
+}
+nav-text
+{
+    width: 10%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 1.2rem;
+
+    
+    height: 100%;
+}
+nav-text a
+{    padding: 0.8rem 2rem;
+    border-radius: 2rem;
+    background-color: black;
+    font-family: "head";
+    font-stretch: 700%;
+    color: aliceblue;
+    text-decoration: none;
+}
+
+nav ul
+{
+    height: 98%;
+    width: 90%;
+    display: flex;
+    justify-content:left ;
+    align-items: center;
+    gap:2rem;
+    color: black;
+    align-items: center;
+   
+    list-style: none;
+}
+li
+{
+    padding: 0.5rem;
+   
+}
+nav ul li a
+{
+    font-family: "light";
+    font-size: 1.8rem;
+    font-weight: 900;
+     color: rgb(0, 0, 0);
+     
+    text-decoration: none;
+}
+li:hover
+{
+    transition: 0.3s linear;
+    padding-top: 0.5rem;
+  
+    cursor: pointer;
+    
+}
+.about-page {
+   width:100%;
+   height: 90vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   
+   padding: 2rem;
+   background-color: #000000;
+
+   box-shadow: 0 0 10px rgba(153, 153, 153, 0.1);
+}
+
+
+
+.info-table {
+   
+   width: 70%;
+   border-collapse: collapse;
+   margin-top: 1rem;
+   font-family: light;
+   font-size: 2rem;
+}
+
+.info-table td {
+   padding: 2rem;
+   border: 1px solid #000000;
+   text-align: center;
+}
+
+.info-table .label {
+   font-weight: bold;
+   background-color: #f9f9f9;
+}
+
+.info-table .value {
+   background-color: #ffffff;
+}
+
+.info-table tr:nth-child(even) {
+   background-color: #f2f2f2;
+}
